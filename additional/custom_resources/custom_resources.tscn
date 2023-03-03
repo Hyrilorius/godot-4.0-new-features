@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://additional/custom_resources/inventory_item_node.gd" id="1_lcxqm"]
 [ext_resource type="Resource" uid="uid://dopjjsgph4tag" path="res://additional/custom_resources/sword.tres" id="2_iys2x"]
-[ext_resource type="Resource" path="res://additional/custom_resources/shield.tres" id="3_oxnij"]
+[ext_resource type="Resource" uid="uid://b2oacdvkpmcwf" path="res://additional/custom_resources/shield.tres" id="3_oxnij"]
 
 [node name="custom_resources" type="Control"]
 layout_mode = 3
@@ -15,6 +15,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -53,6 +54,7 @@ layout_mode = 2
 script = ExtResource("1_lcxqm")
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_top = -128.0
 offset_right = 293.0
 offset_bottom = -76.0

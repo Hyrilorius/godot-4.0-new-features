@@ -1,0 +1,48 @@
+# LANGUAGE translation for New features in Godot 4.0 (GDQuest) for the following files:
+# res://additional/POT_generation/pot_generation.tscn
+#
+# FIRST AUTHOR < EMAIL @ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: New features in Godot 4.0 (GDQuest)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: additional/POT_generation/pot_generation.tscn
+msgid ""
+"Go to Project > Project Settings > Localisation\n"
+"Then go to "POT Generation", and generate a POT file.\n"
+"\n"
+"The file won't show in the editor, you need to open the project's directory in your file browser to see it."
+msgstr ""
+
+#: additional/POT_generation/pot_generation.tscn
+msgid "Game Options"
+msgstr ""
+
+#: additional/POT_generation/pot_generation.tscn
+msgid "Screen"
+msgstr ""
+
+#: additional/POT_generation/pot_generation.tscn
+msgid "Fullscreen"
+msgstr ""
+
+#: additional/POT_generation/pot_generation.tscn
+msgid "Screen Size"
+msgstr ""
+
+#: additional/POT_generation/pot_generation.tscn
+msgid "Sound"
+msgstr ""
+
+#: additional/POT_generation/pot_generation.tscn
+msgid "Master"
+msgstr ""
+
+#: additional/POT_generation/pot_generation.tscn
+msgid "FX"
+msgstr ""
