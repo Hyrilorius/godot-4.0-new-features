@@ -1,7 +1,4 @@
-[gd_resource type="Environment" load_steps=7 format=3 uid="uid://6mlwdgxo7f7x"]
-
-[sub_resource type="Shader" id="Shader_ykx8w"]
-code = "shader_type sky;
+shader_type sky;
 
 uniform sampler2D clouds_sampler : filter_linear_mipmap;
 uniform vec3 top_color : source_color = vec3(1.0);
@@ -63,7 +60,9 @@ void sky() {
 	// Clouds
 	vec2 cloud_uv = EYEDIR.xz / EYEDIR.y;
 	float cloud_mask = texture(clouds_sampler, cloud_uv * 0.05 + TIME * 0.001).x;
-	cloud_mask *= step(SKY_COORDS.y, 0.5);
+	cloud_mask *= step(SKY_COORDS.y, 0.5) * 
+	clamp((1.0 - distance(vec2(0.5), cloud_uv) * 0.1), 0.0, 1.0)
+	;
 
 	COLOR.rgb = mix(
 		COLOR.rgb,
@@ -71,56 +70,3 @@ void sky() {
 		cloud_mask
 	);
 }
-"
-
-[sub_resource type="Gradient" id="Gradient_xjxvb"]
-offsets = PackedFloat32Array(0.658451, 0.846244)
-colors = PackedColorArray(0, 0, 0, 1, 0.971354, 0.942708, 1, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_5m3ov"]
-noise_type = 4
-frequency = 0.012
-fractal_octaves = 4
-fractal_lacunarity = 2.194
-fractal_gain = 0.525
-fractal_weighted_strength = 0.05
-domain_warp_enabled = true
-domain_warp_type = 1
-domain_warp_amplitude = 4.0
-domain_warp_frequency = 0.067
-domain_warp_fractal_octaves = 2
-domain_warp_fractal_lacunarity = 2.36
-domain_warp_fractal_gain = 0.605
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hcq6n"]
-width = 1024
-height = 1024
-seamless = true
-color_ramp = SubResource("Gradient_xjxvb")
-noise = SubResource("FastNoiseLite_5m3ov")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ubxq"]
-shader = SubResource("Shader_ykx8w")
-shader_parameter/top_color = Color(0.109804, 0.541176, 0.866667, 1)
-shader_parameter/bottom_color = Color(0.215686, 0.109804, 0.0196078, 1)
-shader_parameter/sun_scatter = Color(0.564706, 0.803922, 1, 1)
-shader_parameter/star_stength = 0.0
-shader_parameter/clouds_tint = Color(1, 1, 1, 1)
-shader_parameter/clouds_sampler = SubResource("NoiseTexture2D_hcq6n")
-
-[sub_resource type="Sky" id="Sky_lx1yv"]
-sky_material = SubResource("ShaderMaterial_4ubxq")
-
-[resource]
-background_mode = 2
-sky = SubResource("Sky_lx1yv")
-ambient_light_color = Color(0.862745, 0.45098, 0.101961, 1)
-ambient_light_sky_contribution = 0.5
-tonemap_mode = 2
-glow_enabled = true
-fog_enabled = true
-fog_light_color = Color(0.670588, 0.788235, 0.968627, 1)
-fog_light_energy = 0.2
-fog_density = 0.005
-fog_sky_affect = 0.0
-fog_height_density = 1.0
